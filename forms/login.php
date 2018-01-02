@@ -36,7 +36,7 @@
 <div class="container">
     <form method="post">
     <label><b>Email</b></label>
-    <input type="email" placeholder="Enter Username" name="uemail" required>
+    <input type="email" placeholder="Enter Email" name="uemail" required>
     <label><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
     <?php

@@ -30,7 +30,7 @@ function start(){
     offset  = {x:0, y:50};
     canvas.width = Math.min(window.innerWidth,window.innerHeight) * 0.8;
     canvas.height = canvas.width;
-    size = Math.floor((canvas.width-offset.y)/n);
+    size = Math.floor((canvas.height-offset.y)/n);
     canvas.width = n*size+offset.x;
     canvas.height = n*size+offset.y;
     listrectangles = [];
@@ -57,13 +57,14 @@ function start(){
     },false);
     canvas.addEventListener('mousemove',function(evt){
         var mousePos = getMouseCoordinate(canvas,evt);
-        // console.log("x: " +mousePos.x + " y: " + mousePos.y);
+        console.log("x: " +mousePos.x + " y: " + mousePos.y);
     },false);
     gameState = "middle";
 }
 function update(){
     ctx.clearRect(0,0,canvas.width,canvas.height);    
     writeText(canvas,"Time:"+(time/fps).toFixed(2)+"s",10,30);
+    
     if(counter < n*n){
         time = time + 1;
         for(var x = 0; x < n; x++){
@@ -134,15 +135,15 @@ function randomPermutation(n){
 function drawSquare(x,y,color){
     var ctx = canvas.getContext("2d");    
     ctx.fillStyle = color;
-    ctx.fillRect(offset.x+x*size+3,offset.y+y*size+3,size-3,size-3);        
+    ctx.fillRect(offset.x+x*size,offset.y+y*size,size-4,size-4);        
     ctx.font="20px Georgia";
     ctx.textAlign="center"; 
     ctx.textBaseline = "middle";
     ctx.fillStyle = "#000000";
-    var rectHeight = size-3;
-    var rectWidth = size-3;
-    var rectX = x*size+3;
-    var rectY = y*size+5;
+    var rectHeight = size;
+    var rectWidth = size;
+    var rectX = x*size;
+    var rectY = y*size;
     ctx.fillText(listrectangles[y][x].value+1,offset.x + rectX+(rectWidth/2),offset.y + rectY+(rectHeight/2));
 }
 
@@ -157,8 +158,8 @@ function writeText(canvas, message, x, y){
 function getMouseCoordinate(canvas, evt){
     var rect = canvas.getBoundingClientRect();    
     return{
-        x:Math.floor((evt.clientX - offset.x - rect.left)/size),
-        y:Math.floor((evt.clientY - offset.y - rect.top)/size)
+        x:Math.floor((evt.clientX - offset.x-rect.left)/size),
+        y:Math.floor((evt.clientY - offset.y-rect.top)/size)
     };
 }
 

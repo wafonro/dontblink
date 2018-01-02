@@ -22,7 +22,7 @@ $dbh = Database::connect();
   <?php //printNavBar()?>
 <div id="menu-center">
     <h1>Squared</h1>
-    <img id="game_image"src="../img/game1.png" alt="">
+    <img id="game_image"src="../img/squared.png" alt="">
     <h2>Description</h2>
     <p id="description">In this game the player must click the numbers from 1 to n in their increasing order the fastest possible. The player can choose a board side from 4 to 10 squares and there is a penalty of 5s for each wrong click</p>
     <h2>Size: <span id="slider-value">4</span></h2>    

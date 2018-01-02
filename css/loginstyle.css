@@ -1,0 +1,90 @@
+input[type=text], input[type=password],input[type=email] {
+    width: 95%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+body{
+    background: #f79d00; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f79d00, #64f38c); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f79d00, #64f38c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+button {
+    background-color: #4CAF50;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 18px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 95%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#signupbtn{
+    background-color: #c4d410;    
+}
+#recoverbtn{
+    background-color: #f44336;
+    
+}
+.g-recaptcha{
+    width:304px;
+    margin: auto;
+    padding:10px;
+}
+
+.imgcontainer {
+    width:40%;
+    text-align: center;
+    margin: auto;
+}
+#rememberme{
+    float: left;
+    padding: 10px 30px;
+}
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    width:40%;
+    min-width:360px;
+    max-width:400px;
+    text-align: center;
+    margin: auto;
+    /* background-color: rgb(168, 175, 165); */
+    border-radius: 10px;
+    border: 3px dashed black;
+    padding:20px;
+    padding-bottom: 30px;
+    margin-top: 70px;
+}
+
+span.psw {
+    float: left;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+#down-container{
+    background-color: #9c8d8d93;
+}
+

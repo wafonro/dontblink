@@ -31,11 +31,11 @@ else
 $value = 1;
 if(isset($_GET["value"])){
     $value = $_GET["value"];
-    if(!is_numeric($value) || $value > 12 || $value < 1){
+    if(!is_numeric($value) || $value > 6 || $value < 1){
         $value = 1;
     }
 }
-echo '<input id = "slider" oninput="printValue(5,\'s\')" type="range" value="'.$value.'" min="1" max="12"> <span id="slider-value">'.(5*$value).'s'.'</span>';
+echo '<input id = "slider" oninput="printValue(10,\'s\')" type="range" value="'.$value.'" min="1" max="6"> <span id="slider-value">'.(10*$value).'s'.'</span>';
 ?>
   <input type="submit" value="RESET">
 </form>

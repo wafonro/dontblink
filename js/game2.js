@@ -15,7 +15,7 @@ function gameManage(){
     else if(gameState == "end") game_over();
 }
 function start(){
-    time = n*5*fps;
+    time = n*10*fps;
     score = 0;
     circle = {x:canvas.width / 2, y:canvas.height / 2, r:canvas.width/20};
     canvas.width = Math.min(window.innerWidth,window.innerHeight) * 0.8;
@@ -148,5 +148,5 @@ setInterval(gameManage,1000/fps);
 // Displays to the user the value in the
 // current range-sliders
 function printValue(){
-	document.getElementById("slider-value").innerHTML = 5*document.getElementById("slider").value +"s";
+	document.getElementById("slider-value").innerHTML = 10*document.getElementById("slider").value +"s";
 }

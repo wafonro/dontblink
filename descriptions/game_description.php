@@ -1,11 +1,17 @@
 <?php 
 include_once("../classes/Database.php");
 include_once("../classes/User.php");
+include_once("../classes/Game.php");
 session_start();
 // include_once("forms/navbar.php");
 $dbh = Database::connect();
+try{
+    $game = Game::getGameByName($dbh,$_GET["game"]);
+}catch(Exception $e){
+    print_r($e);
+}
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html>]
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,18 +25,21 @@ $dbh = Database::connect();
     <script src="../js/game_description.js"></script>
 </head>
 <body>
-  <?php //printNavBar()?>
-<div id="menu-center">
-    <h1>Squared</h1>
-    <img id="game_image"src="../img/squared.png" alt="">
+<?php 
+echo"<div id='menu-center'>
+    <h1>$game->name</h1>
+    <img id='game_image'src='../img/$game->photo' alt=''>
     <h2>Description</h2>
-    <p id="description">In this game the player must click the numbers from 1 to n in their increasing order the fastest possible. The player can choose a board side from 4 to 10 squares and there is a penalty of 5s for each wrong click</p>
-    <h2>Size: <span id="slider-value">4</span></h2>    
-    <div id="slider-container">
-        <input type="range" min="4" max="10" value="4" id="slider">
-    </div>
-        <button id="to_game" class="btn btn-success"> Play</button>
-        <button id="return" class="btn btn-info"> Back</button>
-</div>  
+    <p id='description'>$game->description</p>
+    <h2>Size: <span id='slider-value'>$game->min</span></h2>
+    <form action='../games/$game->link' method='GET'>   
+        <div id='slider-container'>
+        <input name='value' type='range' min='$game->min' max='$game->max' value='$game->min' id='slider'>
+        </div>
+    <input type='submit' id='to_game' class='btn btn-success' value='Play'></button>
+    </form>
+    <button id='return' class='btn btn-info'> Back</button>
+</div>";
+?>  
 </body>
 </html>

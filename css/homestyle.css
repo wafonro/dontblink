@@ -1,12 +1,18 @@
+body{
+    background: #f79d00; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f79d00, #64f38c); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f79d00, #64f38c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
+
 #menu{    
     width: 100%;
 }
 #menu-center{
     float: left;
-    background-color: red;
     width:68%;
     height:auto;
     border-right: 2px solid black;
+    text-align: center;     
 }
 #menu-right{
     float: left;
@@ -14,11 +20,17 @@
     width: 30%;
     
 }
+.demo-img{
+    width:80%;
+    height: 320px;
+    border: 3px dashed black;
+    border-radius: 4px;
+}
 .container{
     width: 40%;
-    padding: 0;
-    padding-top: 40%;
-    margin: 30px auto;
+    min-width: 320px;
+    padding-top: 20px;
+    margin: auto;
     margin-left: 5%;
     border: 0px solid black;
     border-radius: 15px;
@@ -28,6 +40,7 @@
     /* background-color: rgb(244, 239, 236); */
     display: inline-block;
     font-size: 20px;
+    text-align: center;
 }
 .container:hover{
     background-color: rgb(216, 214, 212);

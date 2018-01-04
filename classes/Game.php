@@ -23,6 +23,15 @@ class Game{
             return false;
         }
     }
+    public static function getAllGames($dbh){
+        $query = "SELECT * FROM `games_descriptions` WHERE 1";
+        $sth = $dbh->prepare($query);
+        $sth->setFetchMode(PDO::FETCH_CLASS,'Game');
+        $sth->execute();
+        $games = $sth->fetchAll();        
+        $sth->closeCursor();
+        return $games;
+    }
     
 }   
 

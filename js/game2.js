@@ -53,7 +53,8 @@ function game_over(){
     {
         nickname:userName,
         game:2,
-        score: score
+        score: score,
+        subtype: n
     }).done(function( data ) {
         // alert( "Data Loaded: " + data );
       });

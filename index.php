@@ -37,7 +37,7 @@ else
 
                 <h2>User : <?php echo "$user->nickname"?></h2>
                 <h4>Numplays : <?php echo "$user->numplays"?> </h4>
-                <a href="descriptions/player_statistcs.php"><button class="btn btn-info">Statistics</button></a>
+                <a href="descriptions/player_statistic.php"><button class="btn btn-info">Statistics</button></a>
                 <a href="forms/logout.php"><button class="btn btn-danger">Logout</button></a>
             </div>
         </div>

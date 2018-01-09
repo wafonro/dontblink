@@ -13,6 +13,6 @@ if(isset($_SESSION['user'])){
 $dbh = Database::connect();
 print_r($_POST);
 if(isset($_POST['nickname']))
-    User::push_data($dbh,$_POST['nickname'],$_POST['game'],$_POST['score']);
+    User::push_data($dbh,$_POST['nickname'],$_POST['game'],$_POST['subtype'],$_POST['score']);
 
 ?>

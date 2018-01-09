@@ -19,7 +19,7 @@ else
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>Don't blink</title>
     <link rel="stylesheet" type="text/css" href="../css/gamestyle.css">    
     <script src="../js/jQuery.js"></script>
 </head>

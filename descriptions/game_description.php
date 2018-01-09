@@ -22,7 +22,7 @@ try{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Description</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
     <link rel="stylesheet" type ="text/css" href="../css/game_description.css">
@@ -43,7 +43,9 @@ echo"<div id='menu-center'>
         </div>
     <input type='submit' id='to_game' class='btn btn-success' value='Play'></button>
     </form>
-    <button id='return' class='btn btn-info'> Back</button>
+    <a href='../index.php'>
+        <button id='return' class='btn btn-info'> Back</button>
+    </a>
 </div>";
 ?>  
 </body>

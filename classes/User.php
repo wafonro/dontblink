@@ -50,10 +50,10 @@ class User{
             $_SESSION["loginin-fail"] = true;           
         }
     }
-    public static function push_data($dbh,$nickname,$game,$score){
-        $query = "INSERT INTO `game_data` (`nickname`, `type`, `score`, `time`) VALUES (?,?,?, CURRENT_TIMESTAMP)";
+    public static function push_data($dbh,$nickname,$game,$subtype,$score){
+        $query = "INSERT INTO `game_data` (`nickname`, `type`,`subtype`, `score`, `time`) VALUES (?,?,?,?, CURRENT_TIMESTAMP)";
         $sth = $dbh->prepare($query);
-        $sth->execute(array($nickname, $game, $score));
+        $sth->execute(array($nickname, $game,$subtype, $score));
         $query = "UPDATE `Users` SET `numplays`=`numplays`+1 WHERE `nickname`=  ?";
         $sth = $dbh->prepare($query);
         $sth->execute(array($nickname));        

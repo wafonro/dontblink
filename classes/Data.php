@@ -18,5 +18,18 @@ class Data{
             return false;
         } 
     }
+    public static function getDatabyTypeandSubType($dbh,$nickname,$type,$subtype){
+        try{
+            $query = "SELECT * FROM `game_data` WHERE `nickname` LIKE ? AND `type` = ? AND`subtype` = ?";
+            $sth = $dbh->prepare($query);
+            $sth->setFetchMode(PDO::FETCH_CLASS,'Data');
+            $sth->execute(array($nickname,$type,$subtype));
+            $data = $sth->fetchAll();        
+            $sth->closeCursor();
+            return $data;
+        }catch(PDOException $e){
+            return false;
+        } 
+    }
 };
 ?>

@@ -9,15 +9,18 @@ body{
 }
 #menu-center{
     float: left;
-    width:68%;
+    width:100%;
     height:auto;
-    border-right: 2px solid black;
     text-align: center;     
 }
 #menu-right{
-    float: left;
-    background-color: blue;
-    width: 30%;
+    position: fixed;
+    margin-left: 75%;
+    width: 20%;
+    text-align: center;
+    margin-top: 200px;
+    border: 3px dashed black;
+    border-radius: 10px;
     
 }
 .demo-img{
@@ -52,7 +55,7 @@ body{
     transition: .5s;
 }
 .btn{
-    width: 40%;
+    width:40%;
     margin-top: 10px;
     margin-bottom: 10px;
 }

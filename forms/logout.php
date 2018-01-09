@@ -14,6 +14,6 @@ unset($_SESSION['user']);
 session_destroy();
 
 // Jump to login page
-header('Location: ../index.php');
+header('Location: login.php');
 
 ?>

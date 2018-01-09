@@ -1,9 +1,19 @@
 <?php 
 include_once("../classes/Database.php");
 include_once("../classes/User.php");
+include_once("../classes/Data.php");
+
+session_name("gaming-session");
 session_start();
-// include_once("forms/navbar.php");
+if (!isset($_SESSION['initiated'])) {
+    session_regenerate_id();
+    $_SESSION['initiated'] = true;
+}
 $dbh = Database::connect();
+if(isset($_SESSION['user']))
+    $user = $_SESSION["user"];
+else
+    header("Location: ../forms/login.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,21 +25,39 @@ $dbh = Database::connect();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type ="text/css" href="../css/game_description.css">
     <script src="../js/jQuery.js"></script>
-    <script src="../js/game_description.js"></script>
+    <script type="text/javascript" src="../js/jqplot/jquery.jqplot.js"></script>
+    <script type="text/javascript" src="../js/jqplot/plugins/jqplot.json2.js"></script>
+    <link rel="stylesheet" type="text/css" href="../js/jquery.jqplot.css" />
 </head>
 <body>
-  <?php //printNavBar()?>
-<div id="menu-center">
-    <h1>Squared</h1>
-    <img id="game_image"src="../img/game1.png" alt="">
-    <h2>Description</h2>
-    <p id="description">In this game the player must click the numbers from 1 to n in their increasing order the fastest possible. The player can choose a board side from 4 to 10 squares and there is a penalty of 5s for each wrong click</p>
-    <h2>Size: <span id="slider-value">4</span></h2>    
-    <div id="slider-container">
-        <input type="range" min="4" max="10" value="4" id="slider">
-    </div>
-        <button id="to_game" class="btn btn-success"> Play</button>
-        <button id="return" class="btn btn-info"> Back</button>
-</div>  
+    <div id="chart1" style="height:400px;width:400px; ">fadfa</div>
+    <?php $allData = Data::getDatabyType($dbh,$user->nickname,1);
+    for ($i=0; $i<10; $i+=1) {
+        echo "data[0].push([$i,".$allData[$i]->score."])";
+    }
+    ?>
+    <script>
+            $(document).ready(function(){
+    // Our data renderer function, returns an array of the form:
+    // [[[x1, sin(x1)], [x2, sin(x2)], ...]]
+    var sineRenderer = function() {
+        var data = [[]];
+        <?php
+        for ($i=0; $i<count($allData); $i+=1) {
+            echo "data[0].push([$i,".$allData[$i]->score."]);";
+        }
+        ?>
+        return data;
+    };
+    
+    // we have an empty data array here, but use the "dataRenderer"
+    // option to tell the plot to get data from our renderer.
+    var plot1 = $.jqplot('chart1',[],{
+        title: 'Sine Data Renderer',
+        dataRenderer: sineRenderer
+    });
+    });
+
+    </script>
 </body>
 </html>

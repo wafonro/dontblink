@@ -10,7 +10,7 @@ class User{
         return $this->nickname;
     }
 
-    private static function getUserByMail($dbh,$email){
+    public static function getUserByMail($dbh,$email){
         try{
             $query = "SELECT * FROM `Users` WHERE `email` LIKE ?";
             $sth = $dbh->prepare($query);
@@ -54,7 +54,7 @@ class User{
         $query = "INSERT INTO `game_data` (`nickname`, `type`, `score`, `time`) VALUES (?,?,?, CURRENT_TIMESTAMP)";
         $sth = $dbh->prepare($query);
         $sth->execute(array($nickname, $game, $score));
-        $query = "UPDATE `Users` SET `numplays`=`numplays`+1 WHERE `nickname`= ?";
+        $query = "UPDATE `Users` SET `numplays`=`numplays`+1 WHERE `nickname`=  ?";
         $sth = $dbh->prepare($query);
         $sth->execute(array($nickname));        
         

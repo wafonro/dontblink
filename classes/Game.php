@@ -4,8 +4,11 @@ class Game{
     public $photo;
     public $description;
     public $link;
+    public $type;
+    public $multiplier;
     public $min;
     public $max;
+    public $unit;
  
     public function __toString() {
         return $this->photo;

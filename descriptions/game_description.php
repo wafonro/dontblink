@@ -31,10 +31,10 @@ echo"<div id='menu-center'>
     <img id='game_image'src='../img/$game->photo' alt=''>
     <h2>Description</h2>
     <p id='description'>$game->description</p>
-    <h2>Size: <span id='slider-value'>$game->min</span></h2>
+    <h2>$game->type : <span id='slider-value'>".($game->multiplier*$game->min)."</span>$game->unit</h2>
     <form action='../games/$game->link' method='GET'>   
         <div id='slider-container'>
-        <input name='value' type='range' min='$game->min' max='$game->max' value='$game->min' id='slider'>
+        <input name='value' type='range' step='$game->multiplier' min='".($game->multiplier*$game->min)."' max='".($game->multiplier*$game->max)."' value='".($game->multiplier*$game->min)."' id='slider'>
         </div>
     <input type='submit' id='to_game' class='btn btn-success' value='Play'></button>
     </form>

@@ -3,6 +3,7 @@ class User{
     public $email;
     public $nickname;
     public $password;
+    public $numplays;
  
     public function __toString() {
      
@@ -53,6 +54,10 @@ class User{
         $query = "INSERT INTO `game_data` (`nickname`, `type`, `score`, `time`) VALUES (?,?,?, CURRENT_TIMESTAMP)";
         $sth = $dbh->prepare($query);
         $sth->execute(array($nickname, $game, $score));
+        $query = "UPDATE `Users` SET `numplays`=`numplays`+1 WHERE `nickname`= ?";
+        $sth = $dbh->prepare($query);
+        $sth->execute(array($nickname));        
+        
     }
     public static function signUpUser($dbh, $email, $nickname, $password){
         if(!$password){
@@ -63,7 +68,7 @@ class User{
             $_SESSION["invalid-nick"] = true;
         }if(filter_var($email, FILTER_VALIDATE_EMAIL)){
             try{
-                $query = "INSERT INTO `Users` (`email`, `nickname`, `password`) VALUES (?,?, SHA1(?))";
+                $query = "INSERT INTO `Users` (`email`, `nickname`, `password`, `numplays`) VALUES (?,?, SHA1(?),0)";
                 $sth = $dbh->prepare($query);
                 $sth->execute(array($email, $nickname, $password));
                 return User::logInUser($dbh,$email,$password);

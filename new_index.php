@@ -11,6 +11,10 @@ if (!isset($_SESSION['initiated'])) {
   $_SESSION['initiated'] = true;
 }
 $dbh = Database::connect();
+if(isset($_SESSION['user']))
+    $user = $_SESSION["user"];
+else
+    header("Location: ../forms/login.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +23,9 @@ $dbh = Database::connect();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link href="./css/homestyle.css" type="text/css" rel="stylesheet">
+
 </head>
 <body>
 <!-- TODO:: put navbar here -->
@@ -30,29 +36,25 @@ $dbh = Database::connect();
         foreach($games as $x){
             
             echo "
-            <div id='con2' class='container'>
+            <div class='container'>
             <img class='demo-img' src='img/$x->photo' alt='$x->name game picture'>
-            <h3>$x->name</h3>
-            <button>Play</button>
-            <button>Description</button>
+            <h3>".strtoupper($x->name)."</h3>
+            <button class='btn btn-success'>  Play  </button>
+            <form action='descriptions/game_description.php' method='GET'>
+            <button class='btn btn-danger' type='submit' name='game' value='$x->name'>Description</button>
+            </form>
             </div>";
 
         }
         ?>
-        <!-- <div id="con1" class="container">
-            <img src="img/" alt="Squared game picture">
-                
-        </div>
-
-        <div id="con3"class="container">
-            <img src="" alt="Squared game picture">        
-        </div>
-        <div id="con4" class="container">
-            <img src="" alt="Squared game picture">            
-        </div> -->
 
     </div>
-    <div id=menu-right></div>
+    <div id=menu-right>
+        <ul>
+            <li>User : <?php echo "$user->nickname"?></li>
+            <li>Numplays : <?php echo "$user->numplays"?> </li>
+        </ul>
+    </div>
 </div>
 </body>
 </html>

@@ -6,7 +6,12 @@ session_start();
 // include_once("forms/navbar.php");
 $dbh = Database::connect();
 try{
-    $game = Game::getGameByName($dbh,$_GET["game"]);
+    if(isset($_GET["game"])){
+        $game = Game::getGameByName($dbh,$_GET["game"]);
+    }
+    if(!isset($game) || $game == NULL){
+        $game = Game::getGameByName($dbh,"squared");
+    }
 }catch(Exception $e){
     print_r($e);
 }
@@ -18,7 +23,7 @@ try{
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
     <link rel="stylesheet" type ="text/css" href="../css/game_description.css">
     <script src="../js/jQuery.js"></script>
@@ -27,7 +32,7 @@ try{
 <body>
 <?php 
 echo"<div id='menu-center'>
-    <h1>$game->name</h1>
+    <h1>".strtoupper($game->name)."</h1>
     <img id='game_image'src='../img/$game->photo' alt=''>
     <h2>Description</h2>
     <p id='description'>$game->description</p>

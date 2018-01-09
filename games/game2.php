@@ -30,7 +30,7 @@ else
 <?php 
 $value = 1;
 if(isset($_GET["value"])){
-    $value = $_GET["value"];
+    $value = $_GET["value"]/10;
     if(!is_numeric($value) || $value > 6 || $value < 1){
         $value = 1;
     }

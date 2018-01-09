@@ -91,13 +91,13 @@ function writeScore(canvas, score) {
     context.textAlign = "left";
     context.font = '18pt Consolas';
     context.fillStyle = 'white';
-    context.fillText("score:" + score, 10, 25);
+    context.fillText("Score: " + score, 10, 25);
 }
 function writeTime(canvas, score) {
     context.textAlign = "left";
     context.font = '18pt Consolas';
     context.fillStyle = 'white';
-    context.fillText("Time:" + (time/60).toFixed(1), 10, 50);
+    context.fillText("Time:" + (time/60).toFixed(1) + " s", 10, 50);
 }
 
 function drawCircle(canvas,circle){

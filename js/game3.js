@@ -16,25 +16,16 @@ function gameManage(){
     else if(gameState == "end") game_over();
 }
 function start(){
+    updateN();
     canvas.width = Math.min(window.innerWidth,window.innerHeight) * 0.8;
     canvas.height = canvas.width;
     time = 0;
     score = 0;
     counter = 0;
     delay = 0;
+    isSet = false;
     gameState = "middle";
-    canvas.addEventListener("click",function(){
-        if(gameState == "middle"){
-            if(isSet == false){
-                score += 1*fps;
-            }else if(isSet == true){
-                isSet = false;
-                score += delay;
-                delay = 0;
-                counter++;
-            }
-        }
-    });
+
 }
 function game_over(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -77,10 +68,38 @@ function update(){
     ctx.textAlign = "left";
     ctx.fillStyle = "red";
     ctx.font = "24px calibri";
-    ctx.fillText("Blinks: " + counter,10,25);
-    ctx.fillText("Penalty:"+(1000*score/fps).toFixed(0)+" ms",10 , 50);
+    ctx.fillText("Blinks: " +  (n-counter),10,25);
+    ctx.fillText("Penalty: "+(1000*score/fps).toFixed(0)+" ms",10 , 50);
     if(counter == n)
         gameState="end";
 }
 
+function updateN(){
+    n = $('#slider').val();
+     // handles out of bounds
+    if(n > 5) n = 5;
+    else if(n < 1) n = 1;
+    n *= 5;
+    //  restart game and prevents page reloading
+    gameState = "begin";
+    return false;
+}
+
 setInterval(gameManage,1000/fps);
+
+canvas.addEventListener("click",function(){
+    if(gameState == "middle"){
+        if(isSet == false){
+            score += 1*fps;
+        }else if(isSet == true){
+            isSet = false;
+            score += delay;
+            delay = 0;
+            counter++;
+        }
+    }
+});
+
+function printValue(){
+	document.getElementById("slider-value").innerHTML = 5*document.getElementById("slider").value;
+}

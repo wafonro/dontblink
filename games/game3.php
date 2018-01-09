@@ -28,14 +28,14 @@ else
 <div id="forms">
 <form action="" onsubmit="return updateN()" id="change-n">
 <?php 
-$value = 4;
+$value = 1;
 if(isset($_GET["value"])){
-    $value = $_GET["value"];
-    if(!is_numeric($value) || $value > 10 || $value < 4){
-        $value = 4;
+    $value = $_GET["value"]/5;
+    if(!is_numeric($value) || $value > 5 || $value < 1){
+        $value = 1;
     }
 }
-echo '<input id = "slider" type="range" value="'.$value.'" min="4" max="10"> <span id="slider-value">'.$value.'</span>'
+echo '<input id = "slider" type="range" oninput="printValue()" value="'.$value.'" min="1" max="5"> <span id="slider-value">'.(5*$value).'</span>'
 ?>
   <input type="submit" value="RESET">
 </form>

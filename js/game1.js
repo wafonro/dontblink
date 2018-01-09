@@ -63,7 +63,7 @@ function start(){
 }
 function update(){
     ctx.clearRect(0,0,canvas.width,canvas.height);    
-    writeText(canvas,"Time:"+(time/fps).toFixed(2)+"s",10,30);
+    writeText(canvas,"Time:"+(time/fps).toFixed(2)+" s",10,30);
     
     if(counter < n*n){
         time = time + 1;
@@ -102,7 +102,7 @@ function game_over(){
     ctx.fillStyle = "white";
     ctx.font = "48px calibri";
     ctx.fillText("PLAYER: "+userName,canvas.width/2,canvas.height/2-40);
-    ctx.fillText("TIME: "+(time/fps).toFixed(2)+"s",canvas.width/2,canvas.height/2+20);
+    ctx.fillText("TIME: "+(time/fps).toFixed(2)+" s",canvas.width/2,canvas.height/2+20);
     
     $.post("gameLogger.php",
     {
